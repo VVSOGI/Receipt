@@ -3,7 +3,7 @@
 import React from 'react'
 import { OrderType } from '@/types/tickets'
 import { useResponsiveScreen } from '@/app/hooks/useResponsiveScreen'
-import { Desktop, Mobile, Tablet } from '..'
+import { Desktop, Mobile, Tablet, Loading } from '..'
 
 interface Props {
     data: OrderType[]
@@ -11,27 +11,18 @@ interface Props {
 }
 
 export function Orders({ data, next }: Props) {
-    const { isMobile, isTablet, isDesktop } = useResponsiveScreen()
+    const { isMobile, isTablet } = useResponsiveScreen()
     const [loading, setLoading] = React.useState(false)
 
     React.useEffect(() => {
         setLoading(true)
     }, [next])
 
-    if (!loading)
-        return (
-            <>
-                <div className="hidden">
-                    <Mobile data={data} next={next} />
-                </div>
-            </>
-        )
+    if (!loading) return <Loading data={data} next={next} />
 
     if (isMobile) return <Mobile data={data} next={next} />
 
     if (isTablet) return <Tablet data={data} next={next} />
-
-    if (isDesktop) return <Desktop data={data} next={next} />
 
     return <Desktop data={data} next={next} />
 }
