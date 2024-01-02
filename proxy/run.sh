@@ -1,0 +1,1 @@
+docker-compose --profile project_1 up --build -d

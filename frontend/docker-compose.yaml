@@ -1,0 +1,12 @@
+version: '3'
+services:
+    frontend:
+        build: .
+        container_name: frontend
+        profiles: ['project_1']
+        networks:
+            - test_network
+
+networks:
+    test_network:
+        external: true
