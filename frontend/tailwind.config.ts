@@ -51,8 +51,9 @@ const config: Config = {
                 4: '4 4 0%'
             },
             boxShadow: {
-                default: '0 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1)',
-                icon: '0 0 0.25rem 0 rgba(0, 0, 0, 0.2)'
+                default: '0 0 4px rgba(0, 0, 0, 0.2)',
+                order: '0 0 3px rgba(0, 0, 0, 0.2)',
+                icon: '0 0 4px rgba(0, 0, 0, 0.2)'
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
