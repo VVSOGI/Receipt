@@ -1,6 +1,6 @@
 ## Docker compose testing
 
-### How to use
+### How to use Docker
 1. git clone projects.
 2. frontend
    - cd frontend
