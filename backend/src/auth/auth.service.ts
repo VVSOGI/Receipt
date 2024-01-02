@@ -44,8 +44,13 @@ export class AuthService {
     return { accessToken, refreshToken };
   }
 
-  async profile() {
-    return 'profile';
+  async profile(id: string) {
+    const findUser = await this.usersRepository.findUserById(id);
+    return {
+      id: findUser.id,
+      email: findUser.email,
+      permission: findUser.permission,
+    };
   }
 
   async adminCheck(id: string) {

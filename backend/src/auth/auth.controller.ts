@@ -23,8 +23,10 @@ export class AuthController {
   }
 
   @Get('profile')
-  profile() {
-    return this.authService.profile();
+  @UseGuards(JwtAuthGuard)
+  async profile(@Request() req) {
+    const requestUserId = req.user.id;
+    return this.authService.profile(requestUserId);
   }
 
   @Patch(':id/permission')
