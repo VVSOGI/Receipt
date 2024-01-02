@@ -17,6 +17,8 @@ services:
       POSTGRES_DB: ${DB_DATABASE}
     volumes:
       - /var/lib/test/nest-test-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
     networks:
       - test_network
 

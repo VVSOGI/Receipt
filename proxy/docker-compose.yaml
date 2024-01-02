@@ -8,8 +8,6 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "3000:3000"
-      - "4000:4000"
-      - "5432:5432"
     networks:
       - test_network
 
