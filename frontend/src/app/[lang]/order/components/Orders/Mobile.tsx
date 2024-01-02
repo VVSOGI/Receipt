@@ -12,7 +12,7 @@ export function Mobile({ data, next }: Props) {
     return (
         <div className={styles.orders}>
             <div className={styles.ordersWrapper}>
-                <Order data={data.slice(next + 0, next + 3)} />
+                <Order data={data.slice(next + 0, next + 30)} />
             </div>
         </div>
     )

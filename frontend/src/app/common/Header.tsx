@@ -12,10 +12,10 @@ export const Header = ({ locale }: Props) => {
                 <ul className={commonStyles.listWrapper}>
                     <li className={commonStyles.list}>
                         <Link className={commonStyles.listItem} href={`/${locale}/home`}>
-                            Home
+                            홈
                         </Link>
                         <Link className={commonStyles.listItem} href={`/${locale}/order`}>
-                            Order
+                            영수증
                         </Link>
                     </li>
                 </ul>

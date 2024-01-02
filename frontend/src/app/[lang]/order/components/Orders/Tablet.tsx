@@ -12,7 +12,7 @@ export function Tablet({ data, next }: Props) {
     return (
         <div className={styles.orders}>
             <div className={styles.ordersWrapper}>
-                <Order data={data.slice(next + 5, next + 15)} />
+                <Order data={data.slice(next + 0, next + 15)} />
             </div>
             <div className={styles.ordersWrapper}>
                 <Order data={data.slice(next + 15, next + 30)} />
