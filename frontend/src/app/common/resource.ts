@@ -15,6 +15,7 @@ export const commonStyles = {
     listWrapper: 'flex gap-6', // no rem change
     list: 'flex gap-12', // no rem change
     listItem: `dark:text-[#239c62] ${oneMobilePopOTF.className}`,
+    listRightWrapper: `flex items-center gap-4`,
 
     /** Footer */
     footerWrapper: 'flex h-[160px] items-center justify-center border-t border-t-gray-200 p-[148px] py-6', // 10rem to 160px, 9.25rem to 148px

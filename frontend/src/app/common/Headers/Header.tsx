@@ -1,11 +1,14 @@
 import Link from 'next/link'
-import { ThemeButton, commonStyles } from '.'
+import { ThemeButton, commonStyles } from '..'
+import { useResponsiveScreen } from '@/app/hooks/useResponsiveScreen'
 
 interface Props {
     locale: 'en' | 'ko'
 }
 
 export const Header = ({ locale }: Props) => {
+    const { isMobile, isTablet } = useResponsiveScreen()
+
     return (
         <header className={commonStyles.headerWrapper}>
             <nav className={commonStyles.navbar}>
@@ -20,7 +23,7 @@ export const Header = ({ locale }: Props) => {
                     </li>
                 </ul>
 
-                <div className="flex items-center gap-4">
+                <div className={commonStyles.listRightWrapper}>
                     <ThemeButton />
                     <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
                         로그인

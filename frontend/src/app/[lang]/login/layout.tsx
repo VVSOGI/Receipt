@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Locales } from '@/types/locales'
 import { styles } from './resource'
