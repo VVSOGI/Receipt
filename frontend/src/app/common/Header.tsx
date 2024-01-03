@@ -20,7 +20,12 @@ export const Header = ({ locale }: Props) => {
                     </li>
                 </ul>
 
-                <ThemeButton />
+                <div className="flex items-center gap-4">
+                    <ThemeButton />
+                    <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
+                        로그인
+                    </Link>
+                </div>
             </nav>
         </header>
     )
