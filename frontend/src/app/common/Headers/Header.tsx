@@ -1,35 +1,24 @@
-import Link from 'next/link'
-import { ThemeButton, commonStyles } from '..'
 import { useResponsiveScreen } from '@/app/hooks/useResponsiveScreen'
+import { Default, Mobile, Tablet } from './Responsive'
+import { useEffect, useState } from 'react'
 
 interface Props {
     locale: 'en' | 'ko'
 }
 
 export const Header = ({ locale }: Props) => {
+    const [isLoading, setIsLoading] = useState(true)
     const { isMobile, isTablet } = useResponsiveScreen()
 
-    return (
-        <header className={commonStyles.headerWrapper}>
-            <nav className={commonStyles.navbar}>
-                <ul className={commonStyles.listWrapper}>
-                    <li className={commonStyles.list}>
-                        <Link className={commonStyles.listItem} href={`/${locale}/home`}>
-                            홈
-                        </Link>
-                        <Link className={commonStyles.listItem} href={`/${locale}/order`}>
-                            영수증
-                        </Link>
-                    </li>
-                </ul>
+    useEffect(() => {
+        setIsLoading(false)
+    }, [])
 
-                <div className={commonStyles.listRightWrapper}>
-                    <ThemeButton />
-                    <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
-                        로그인
-                    </Link>
-                </div>
-            </nav>
-        </header>
-    )
+    if (isLoading) return <Default locale={locale} />
+
+    if (isMobile) return <Mobile locale={locale} />
+
+    if (isTablet) return <Tablet locale={locale} />
+
+    return <Default locale={locale} />
 }
