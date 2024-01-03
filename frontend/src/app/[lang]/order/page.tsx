@@ -16,7 +16,6 @@ export default async function page({ params, searchParams }: Props) {
         const data = await getOrders()
         return (
             <section className="w-full">
-                <div className={commonStyles.divider} />
                 <Orders next={next} data={data} />
             </section>
         )
