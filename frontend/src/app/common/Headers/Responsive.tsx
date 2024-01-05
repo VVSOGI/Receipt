@@ -1,22 +1,24 @@
 import React from 'react'
 import { ThemeButton, commonStyles } from '..'
 import Link from 'next/link'
+import { HeaderLocales } from '@/types/locales'
 
 interface Props {
+    texts: HeaderLocales | undefined
     locale: 'en' | 'ko'
 }
 
-export function Default({ locale }: Props) {
+export function Default({ texts, locale }: Props) {
     return (
         <header className={commonStyles.headerWrapper}>
             <nav className={commonStyles.navbar}>
                 <ul className={commonStyles.listWrapper}>
                     <li className={commonStyles.list}>
                         <Link className={commonStyles.listItem} href={`/${locale}/home`}>
-                            홈
+                            {texts?.home}
                         </Link>
                         <Link className={commonStyles.listItem} href={`/${locale}/order`}>
-                            영수증
+                            {texts?.log}
                         </Link>
                     </li>
                 </ul>
@@ -24,7 +26,7 @@ export function Default({ locale }: Props) {
                 <div className={commonStyles.listRightWrapper}>
                     <ThemeButton />
                     <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
-                        로그인
+                        {texts?.login}
                     </Link>
                 </div>
             </nav>
@@ -32,17 +34,17 @@ export function Default({ locale }: Props) {
     )
 }
 
-export function Tablet({ locale }: Props) {
+export function Tablet({ texts, locale }: Props) {
     return (
         <header className={commonStyles.headerWrapper}>
             <nav className={commonStyles.navbar}>
                 <ul className={commonStyles.listWrapper}>
                     <li className={commonStyles.list}>
                         <Link className={commonStyles.listItem} href={`/${locale}/home`}>
-                            홈
+                            {texts?.home}
                         </Link>
                         <Link className={commonStyles.listItem} href={`/${locale}/order`}>
-                            영수증
+                            {texts?.log}
                         </Link>
                     </li>
                 </ul>
@@ -50,7 +52,7 @@ export function Tablet({ locale }: Props) {
                 <div className={commonStyles.listRightWrapper}>
                     <ThemeButton />
                     <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
-                        로그인
+                        {texts?.login}
                     </Link>
                 </div>
             </nav>
@@ -58,17 +60,17 @@ export function Tablet({ locale }: Props) {
     )
 }
 
-export function Mobile({ locale }: Props) {
+export function Mobile({ texts, locale }: Props) {
     return (
         <header className={commonStyles.headerWrapperMobile}>
             <nav className={commonStyles.navbar}>
                 <ul className={commonStyles.listWrapper}>
                     <li className={commonStyles.listMobile}>
                         <Link className={commonStyles.listItem} href={`/${locale}/home`}>
-                            홈
+                            {texts?.home}
                         </Link>
                         <Link className={commonStyles.listItem} href={`/${locale}/order`}>
-                            영수증
+                            {texts?.log}
                         </Link>
                     </li>
                 </ul>
@@ -76,7 +78,7 @@ export function Mobile({ locale }: Props) {
                 <div className={commonStyles.listRightWrapper}>
                     <ThemeButton />
                     <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
-                        로그인
+                        {texts?.login}
                     </Link>
                 </div>
             </nav>
