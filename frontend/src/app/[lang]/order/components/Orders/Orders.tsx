@@ -1,9 +1,11 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { OrderType } from '@/types/tickets'
 import { useResponsiveScreen } from '@/app/hooks/useResponsiveScreen'
 import { Desktop, Mobile, Tablet, Loading } from '..'
+import { useRecoilValue } from 'recoil'
+import { languageState } from '@/store/languageState'
 
 interface Props {
     data: OrderType[]
@@ -12,11 +14,12 @@ interface Props {
 
 export function Orders({ data, next }: Props) {
     const { isMobile, isTablet } = useResponsiveScreen()
-    const [loading, setLoading] = React.useState(false)
+    const [loading, setLoading] = useState(false)
+    const language = useRecoilValue(languageState)
 
-    React.useEffect(() => {
-        setLoading(true)
-    }, [next])
+    useEffect(() => {
+        if (language) setLoading(true)
+    }, [next, language])
 
     if (!loading) return <Loading data={data} next={next} />
 
