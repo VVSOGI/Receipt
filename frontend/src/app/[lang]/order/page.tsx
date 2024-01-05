@@ -1,8 +1,8 @@
 import { Locales } from '@/types/locales'
 import { getOrders } from './api/getOrders'
-import { commonStyles } from '@/app/common/resource'
 import { Orders } from './components'
 import Error from '@/app/common/Error'
+import ShareMenu from './components/Share/ShareMenu'
 
 interface Props {
     params: { lang: Locales; page: string }
@@ -17,6 +17,7 @@ export default async function page({ params, searchParams }: Props) {
         return (
             <section className="w-full">
                 <Orders next={next} data={data} />
+                <ShareMenu />
             </section>
         )
     } catch (err: any) {

@@ -7,11 +7,14 @@ const config: Config = {
     theme: {
         colors: {
             primary: '#60d29b',
+            white: '#fff',
             'bg-title': '#e4e4eb',
             'zinc-100': '#f4f4f5',
             'zinc-700': '#3f3f46',
             'gray-100': '#f4f4f5',
             'gray-200': '#e4e4e7',
+            'gray-300': '#d4d4d8',
+            'gray-400': '#a1a1aa',
             'gray-600': '#52525b',
             'gray-700': '#3f3f46',
             'gray-900': '#202026',
@@ -23,6 +26,7 @@ const config: Config = {
 
             dark: {
                 primary: '#239c62',
+                'bg-default': '#202026',
                 'bg-title': '#239c6280'
             }
         },
@@ -53,7 +57,8 @@ const config: Config = {
             boxShadow: {
                 default: '0 0 4px rgba(0, 0, 0, 0.2)',
                 order: '0 0 3px rgba(0, 0, 0, 0.2)',
-                icon: '0 0 4px rgba(0, 0, 0, 0.2)'
+                icon: '0 0 4px rgba(0, 0, 0, 0.2)',
+                share: '2px 2px 4px rgba(0, 0, 0, 0.2)'
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
