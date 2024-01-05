@@ -1,5 +1,6 @@
 import './globals.css'
-import ThemeProviders from '@/provider/theme'
+import ThemeProviders from '@/provider/Theme'
+import RecoilProvider from '@/provider/GlobalState'
 
 import type { Metadata } from 'next'
 
@@ -12,7 +13,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className="dark:#202027">
-                <ThemeProviders>{children}</ThemeProviders>
+                <RecoilProvider>
+                    <ThemeProviders>{children}</ThemeProviders>
+                </RecoilProvider>
             </body>
         </html>
     )
