@@ -16,7 +16,7 @@ export const commonStyles = {
     headerWrapper: 'container py-6',
     navbar: 'flex items-center justify-between',
     listWrapper: 'flex gap-6',
-    list: 'flex gap-12',
+    list: 'flex gap-8',
     listItem: `dark:text-[#239c62] ${oneMobilePopOTF.className}`,
     listRightWrapper: `flex items-center gap-4`,
 

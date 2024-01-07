@@ -13,18 +13,20 @@ export default function page() {
         <div className="w-full my-[32px]">
             <div className={`${oneMobilePopOTF.className} text-[24px]`}>영수증 출력</div>
             <div className="w-full my-6 border border-gray-300 border-dashed border-b-0" />
-            <TextareaAutosize
-                placeholder="글 제목을 입력해주세요."
-                onChange={(e) => setText(e.target.value)}
-                className="dark:bg-dark-textarea-bg w-full p-[16px] resize-none outline-none bg-gray-200 rounded-[4px]"
-                minRows={2}
-            />
-            <TextareaAutosize
-                placeholder="글 내용을 입력해주세요."
-                onChange={(e) => setText(e.target.value)}
-                className="dark:bg-dark-textarea-bg w-full p-[16px] resize-none outline-none bg-gray-200 rounded-[4px]"
-                minRows={10}
-            ></TextareaAutosize>
+            <div className="flex flex-col gap-4">
+                <TextareaAutosize
+                    placeholder="글 제목을 입력해주세요."
+                    onChange={(e) => setText(e.target.value)}
+                    className="dark:bg-dark-textarea-bg w-full px-[16px] py-[32px] resize-none outline-none bg-gray-200 rounded-[4px]"
+                    minRows={2}
+                />
+                <TextareaAutosize
+                    placeholder="글 내용을 입력해주세요."
+                    onChange={(e) => setText(e.target.value)}
+                    className="dark:bg-dark-textarea-bg w-full px-[16px] py-[32px] resize-none outline-none bg-gray-200 rounded-[4px]"
+                    minRows={10}
+                ></TextareaAutosize>
+            </div>
             <div className="w-full my-6 border border-gray-300 border-dashed border-b-0" />
             <div className="flex justify-end">
                 <Button

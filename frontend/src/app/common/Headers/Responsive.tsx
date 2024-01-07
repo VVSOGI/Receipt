@@ -14,10 +14,10 @@ export function Default({ texts, locale }: Props) {
             <nav className={commonStyles.navbar}>
                 <ul className={commonStyles.listWrapper}>
                     <li className={commonStyles.list}>
-                        <Link className={commonStyles.listItem} href={`/${locale}/home`}>
+                        <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
                             {texts?.home}
                         </Link>
-                        <Link className={commonStyles.listItem} href={`/${locale}/order`}>
+                        <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
                             {texts?.log}
                         </Link>
                     </li>
@@ -40,10 +40,10 @@ export function Tablet({ texts, locale }: Props) {
             <nav className={commonStyles.navbar}>
                 <ul className={commonStyles.listWrapper}>
                     <li className={commonStyles.list}>
-                        <Link className={commonStyles.listItem} href={`/${locale}/home`}>
+                        <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
                             {texts?.home}
                         </Link>
-                        <Link className={commonStyles.listItem} href={`/${locale}/order`}>
+                        <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
                             {texts?.log}
                         </Link>
                     </li>
@@ -66,10 +66,10 @@ export function Mobile({ texts, locale }: Props) {
             <nav className={commonStyles.navbar}>
                 <ul className={commonStyles.listWrapper}>
                     <li className={commonStyles.listMobile}>
-                        <Link className={commonStyles.listItem} href={`/${locale}/home`}>
+                        <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
                             {texts?.home}
                         </Link>
-                        <Link className={commonStyles.listItem} href={`/${locale}/order`}>
+                        <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
                             {texts?.log}
                         </Link>
                     </li>
