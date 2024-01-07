@@ -17,6 +17,7 @@ const config: Config = {
             'gray-400': '#a1a1aa',
             'gray-600': '#52525b',
             'gray-700': '#3f3f46',
+            'gray-800': '#232323',
             'gray-900': '#202026',
             'slate-200': '#e2e8f0',
             'slate-600': '#475569',
@@ -24,10 +25,14 @@ const config: Config = {
             'lime-500': '#84cc16',
             'red-500': '#ef4444',
 
+            'downfull-blue': '#0e3296',
+            'downfull-blue-100': '#4172ec',
+
             dark: {
                 primary: '#239c62',
                 'bg-default': '#202026',
-                'bg-title': '#239c6280'
+                'bg-title': '#239c6280',
+                'textarea-bg': '#767676'
             }
         },
         container: {
@@ -58,7 +63,8 @@ const config: Config = {
                 default: '0 0 4px rgba(0, 0, 0, 0.2)',
                 order: '0 0 3px rgba(0, 0, 0, 0.2)',
                 icon: '0 0 4px rgba(0, 0, 0, 0.2)',
-                share: '2px 2px 4px rgba(0, 0, 0, 0.2)'
+                share: '2px 2px 4px rgba(0, 0, 0, 0.2)',
+                button: '0px 2px 4px rgba(0, 0, 0, 0.4)'
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
