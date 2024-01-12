@@ -31,6 +31,9 @@ export const commonStyles = {
     /** ThemeButton */
     themeButton: `hover:bg-zinc-100 active:bg-gray-200 dark:hover:bg-zinc-700 dark:active:bg-gray-900 ${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors dark:text-[#239c62] user-select`,
 
+    /** ThemeButton */
+    profileButton: `${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors dark:text-[#239c62] user-select`,
+
     /** Icons */
     sunIcon: 'h-5 w-5 text-[#239c62]',
     moonIcon: 'h-5 w-5 text-[#202026]'

@@ -17,13 +17,13 @@ export default function page() {
                 <TextareaAutosize
                     placeholder="글 제목을 입력해주세요."
                     onChange={(e) => setText(e.target.value)}
-                    className="dark:bg-dark-textarea-bg w-full px-[16px] py-[32px] resize-none outline-none bg-gray-200 rounded-[4px]"
+                    className="dark:bg-dark-textarea-bg w-full px-[16px] py-[24px] resize-none outline-none bg-gray-200 rounded-[4px]"
                     minRows={2}
                 />
                 <TextareaAutosize
                     placeholder="글 내용을 입력해주세요."
                     onChange={(e) => setText(e.target.value)}
-                    className="dark:bg-dark-textarea-bg w-full px-[16px] py-[32px] resize-none outline-none bg-gray-200 rounded-[4px]"
+                    className="dark:bg-dark-textarea-bg w-full px-[16px] py-[24px] resize-none outline-none bg-gray-200 rounded-[4px]"
                     minRows={10}
                 ></TextareaAutosize>
             </div>

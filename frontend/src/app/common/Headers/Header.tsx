@@ -5,6 +5,9 @@ import { useRecoilState } from 'recoil'
 import { languageState } from '@/store/languageState'
 import { HeaderLocales } from '@/types/locales'
 import { getLocales } from '@/utils/getLocales'
+import useProfile from '@/app/hooks/useProfile'
+import { ThemeButton, commonStyles } from '..'
+import Link from 'next/link'
 
 interface Props {
     locale: 'en' | 'ko'
@@ -13,7 +16,8 @@ interface Props {
 export const Header = ({ locale }: Props) => {
     const [isLoading, setIsLoading] = useState(true)
     const [, setLanguage] = useRecoilState(languageState)
-    const { isMobile, isTablet } = useResponsiveScreen()
+    const { small, medium } = useResponsiveScreen()
+    const { profile } = useProfile()
     const [texts, setTexts] = useState<HeaderLocales | undefined>()
 
     useEffect(() => {
@@ -25,11 +29,118 @@ export const Header = ({ locale }: Props) => {
         setLanguage(locale)
     }, [])
 
-    if (isLoading) return <Default texts={texts} locale={locale} />
+    if (isLoading)
+        return (
+            <header className={commonStyles.headerWrapper}>
+                <nav className={commonStyles.navbar}>
+                    <ul className={commonStyles.listWrapper}>
+                        <li className={commonStyles.list}>
+                            <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
+                                {texts?.home}
+                            </Link>
+                            <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
+                                {texts?.log}
+                            </Link>
+                        </li>
+                    </ul>
 
-    if (isMobile) return <Mobile texts={texts} locale={locale} />
+                    <div className={commonStyles.listRightWrapper}>
+                        <ThemeButton />
+                        {profile ? (
+                            <div className={commonStyles.profileButton}>{profile.email}</div>
+                        ) : (
+                            <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
+                                {texts?.login}
+                            </Link>
+                        )}
+                    </div>
+                </nav>
+            </header>
+        )
 
-    if (isTablet) return <Tablet texts={texts} locale={locale} />
+    if (small)
+        return (
+            <header className={commonStyles.headerWrapperMobile}>
+                <nav className={commonStyles.navbar}>
+                    <ul className={commonStyles.listWrapper}>
+                        <li className={commonStyles.listMobile}>
+                            <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
+                                {texts?.home}
+                            </Link>
+                            <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
+                                {texts?.log}
+                            </Link>
+                        </li>
+                    </ul>
 
-    return <Default texts={texts} locale={locale} />
+                    <div className={commonStyles.listRightWrapper}>
+                        <ThemeButton />
+                        {profile ? (
+                            <div className={commonStyles.profileButton}>{profile.email}</div>
+                        ) : (
+                            <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
+                                {texts?.login}
+                            </Link>
+                        )}
+                    </div>
+                </nav>
+            </header>
+        )
+
+    if (medium)
+        return (
+            <header className={commonStyles.headerWrapper}>
+                <nav className={commonStyles.navbar}>
+                    <ul className={commonStyles.listWrapper}>
+                        <li className={commonStyles.list}>
+                            <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
+                                {texts?.home}
+                            </Link>
+                            <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
+                                {texts?.log}
+                            </Link>
+                        </li>
+                    </ul>
+
+                    <div className={commonStyles.listRightWrapper}>
+                        <ThemeButton />
+                        {profile ? (
+                            <div className={commonStyles.profileButton}>{profile.email}</div>
+                        ) : (
+                            <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
+                                {texts?.login}
+                            </Link>
+                        )}
+                    </div>
+                </nav>
+            </header>
+        )
+
+    return (
+        <header className={commonStyles.headerWrapper}>
+            <nav className={commonStyles.navbar}>
+                <ul className={commonStyles.listWrapper}>
+                    <li className={commonStyles.list}>
+                        <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
+                            {texts?.home}
+                        </Link>
+                        <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
+                            {texts?.log}
+                        </Link>
+                    </li>
+                </ul>
+
+                <div className={commonStyles.listRightWrapper}>
+                    <ThemeButton />
+                    {profile ? (
+                        <div className={commonStyles.profileButton}>{profile.email}</div>
+                    ) : (
+                        <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
+                            {texts?.login}
+                        </Link>
+                    )}
+                </div>
+            </nav>
+        </header>
+    )
 }
