@@ -29,7 +29,10 @@ export const commonStyles = {
     footerContents: 'hover:text-red-500 text-3xl w-fit cursor-pointer select-none font-bold transition',
 
     /** ThemeButton */
-    themeButton: `hover:bg-zinc-100 active:bg-gray-200 dark:hover:bg-zinc-700 dark:active:bg-gray-900 ${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors dark:text-[#239c62] user-select`,
+    themeButton: `hover:bg-zinc-100
+    active:bg-gray-200
+    dark:hover:bg-zinc-700 dark:active:bg-gray-900 dark:text-[#239c62]
+    ${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors user-select`,
 
     /** ThemeButton */
     profileButton: `${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors dark:text-[#239c62] user-select`,

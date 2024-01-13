@@ -1,5 +1,4 @@
 import { useResponsiveScreen } from '@/app/hooks/useResponsiveScreen'
-import { Default, Mobile, Tablet } from './Responsive'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { languageState } from '@/store/languageState'
@@ -130,7 +129,7 @@ export const Header = ({ locale }: Props) => {
                     </li>
                 </ul>
 
-                <div className={commonStyles.listRightWrapper}>
+                <div className={`${commonStyles.listRightWrapper}`}>
                     <ThemeButton />
                     {profile ? (
                         <div className={commonStyles.profileButton}>{profile.email}</div>

@@ -1,6 +1,2 @@
 export * from './Orders/Order'
 export * from './Orders/Orders'
-export * from './Orders/Mobile'
-export * from './Orders/Tablet'
-export * from './Orders/Desktop'
-export * from './Orders/Loading'
