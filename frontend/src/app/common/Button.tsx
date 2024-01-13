@@ -1,4 +1,4 @@
-import { oneMobileOTFRegular, oneMobilePopOTF } from '@/fonts'
+import { oneMobilePopOTF } from '@/fonts'
 import React from 'react'
 
 interface Props {
@@ -15,7 +15,7 @@ export default function Button({ text, mainBgColor = '#232323', subBgColor = '#5
         if (circleElement) {
             circleElement.style.left = `${e.clientX - rect.x}px`
             circleElement.style.top = `${e.clientY - rect.y}px`
-            circleElement.style.transform = 'scale(150)'
+            circleElement.style.transform = 'scale(60)'
             circleElement.style.backgroundColor = subBgColor
             const time = setTimeout(() => {
                 circleElement.style.backgroundColor = mainBgColor
