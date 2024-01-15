@@ -1,5 +1,5 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import api from '../utils/api'
 
 interface ProfileType {
     id: string
@@ -15,16 +15,17 @@ export default function useProfile() {
         const refreshToken = localStorage.getItem('refreshToken')
 
         if (accessToken) {
-            axios
-                .get('/api/auth/getProfile', {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`
-                    }
-                })
+            api.get('/api/auth/getProfile', {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
                 .then((res) => {
                     setProfile(res.data)
                 })
-                .catch((err) => {})
+                .catch((err) => {
+                    console.log(err.response.data)
+                })
         }
     }, [])
 
