@@ -56,7 +56,6 @@ export class AuthController {
       );
       throw new BadRequestException('Invalid user');
     }
-
     return this.authService.refresh(id);
   }
 }
