@@ -8,6 +8,7 @@ import { oneMobilePopOTF } from '@/fonts'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { Locales } from '@/types/locales'
+import api from '@/app/utils/api'
 
 interface Props {
     params: { lang: Locales }
@@ -21,7 +22,7 @@ export default function page({ params: { lang } }: Props) {
     const createReceipt = async () => {
         const accessToken = localStorage.getItem('accessToken')
         try {
-            await axios.post(
+            await api.post(
                 '/api/boards',
                 { title, description },
                 {
