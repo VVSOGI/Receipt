@@ -7,6 +7,8 @@ import {
   UseGuards,
   Request,
   Param,
+  BadRequestException,
+  Logger,
 } from '@nestjs/common';
 import { UpdateUserPermissionDto } from 'src/users/dto/permission-user.dto';
 import { AuthService } from './auth.service';
@@ -29,7 +31,7 @@ export class AuthController {
     return this.authService.profile(requestUserId);
   }
 
-  @Patch(':id/permission')
+  @Patch('permission/:id')
   @UseGuards(JwtAuthGuard)
   async updatePermission(
     @Request() req,
@@ -42,5 +44,19 @@ export class AuthController {
       id,
       ...updateUserPermissionDto,
     });
+  }
+
+  // accessToken이 만료되었을 때, refreshToken을 이용한 재 발급 컨트롤러
+  @Get('refresh/:id')
+  @UseGuards(JwtAuthGuard)
+  async refresh(@Request() req, @Param('id') id: string) {
+    if (req.user.id !== id) {
+      Logger.error(
+        '[AuthController] Not matched user id in refresh token controller',
+      );
+      throw new BadRequestException('Invalid user');
+    }
+
+    return this.authService.refresh(id);
   }
 }

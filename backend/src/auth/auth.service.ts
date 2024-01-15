@@ -64,4 +64,14 @@ export class AuthService {
   async updatePermission(updatePermissions: UpdatePermissions) {
     return this.usersRepository.updateUserPermission(updatePermissions);
   }
+
+  async refresh(id: string) {
+    const user = await this.usersRepository.findUserById(id);
+    const accessToken = await this.jwtService.signAsync(
+      { id: user.id, email: user.email },
+      { expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRATION_TIME },
+    );
+
+    return accessToken;
+  }
 }
