@@ -13,10 +13,10 @@ interface Props {
 }
 
 export const Header = ({ locale }: Props) => {
+    const { profile } = useProfile()
     const [isLoading, setIsLoading] = useState(true)
     const [, setLanguage] = useRecoilState(languageState)
     const { small, medium } = useResponsiveScreen()
-    const { profile } = useProfile()
     const [texts, setTexts] = useState<HeaderLocales | undefined>()
 
     useEffect(() => {
@@ -45,13 +45,7 @@ export const Header = ({ locale }: Props) => {
 
                     <div className={commonStyles.listRightWrapper}>
                         <ThemeButton />
-                        {profile ? (
-                            <div className={commonStyles.profileButton}>{profile.email}</div>
-                        ) : (
-                            <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
-                                {texts?.login}
-                            </Link>
-                        )}
+                        <div className={commonStyles.profileButton}>...Loading</div>
                     </div>
                 </nav>
             </header>
