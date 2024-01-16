@@ -4,6 +4,7 @@ import {
   Controller,
   Get,
   Post,
+  Query,
   Request,
   UseGuards,
 } from '@nestjs/common';
@@ -23,7 +24,11 @@ export class BoardsController {
   }
 
   @Get()
-  getAllBoards() {
-    return this.boardsService.getAllBoards();
+  getAllBoards(@Query('page') page = 1) {
+    if (page <= 0) {
+      throw new BadRequestException('Invalid page');
+    }
+
+    return this.boardsService.getAllBoards({ page });
   }
 }

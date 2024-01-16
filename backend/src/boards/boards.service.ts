@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UsersRepository } from 'src/users/users.repository';
 import { BoardsRepository } from './boards.repository';
-import { CreateBoardDto } from './dto/create-board.dto';
-import { CreateBoard } from './type/types';
+import { CreateBoard, GetBoards } from './type/types';
 
 @Injectable()
 export class BoardsService {
@@ -18,7 +17,7 @@ export class BoardsService {
     return this.boardsRepository.create({ ...createBoard, email });
   }
 
-  getAllBoards() {
-    return this.boardsRepository.getAllBoards();
+  getAllBoards(getBoards: GetBoards) {
+    return this.boardsRepository.getAllBoards(getBoards);
   }
 }

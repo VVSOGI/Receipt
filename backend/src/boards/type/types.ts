@@ -10,3 +10,7 @@ export interface CreateBoard {
   description: string;
   priority: Priority;
 }
+
+export interface GetBoards {
+  page: number;
+}

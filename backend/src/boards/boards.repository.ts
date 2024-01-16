@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { v4 } from 'uuid';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { Board } from './entities/boards.entity';
+import { GetBoards } from './type/types';
 
 interface CreateBoard extends CreateBoardDto {
   email: string;
@@ -23,7 +24,15 @@ export class BoardsRepository {
     return await this.boardsRepository.save(board);
   }
 
-  getAllBoards() {
-    return this.boardsRepository.find();
+  async getAllBoards({ page }: GetBoards) {
+    const [data, total] = await this.boardsRepository.findAndCount({
+      take: 30,
+      skip: 30 * (page - 1),
+    });
+
+    return {
+      data,
+      total,
+    };
   }
 }
