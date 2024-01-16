@@ -19,7 +19,7 @@ export class BoardsRepository {
   ) {}
 
   async create(createBoard: CreateBoard) {
-    const board = this.boardsRepository.create({ id: v4(), ...createBoard });
+    const board = this.boardsRepository.create({ ...createBoard });
 
     return await this.boardsRepository.save(board);
   }
