@@ -7,6 +7,7 @@ import { getLocales } from '@/utils/getLocales'
 import useProfile from '@/app/hooks/useProfile'
 import { ThemeButton, commonStyles } from '..'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 interface Props {
     locale: 'en' | 'ko'
@@ -18,6 +19,14 @@ export const Header = ({ locale }: Props) => {
     const [, setLanguage] = useRecoilState(languageState)
     const { small, medium } = useResponsiveScreen()
     const [texts, setTexts] = useState<HeaderLocales | undefined>()
+    const router = useRouter()
+
+    const logout = () => {
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
+        localStorage.removeItem('userId')
+        router.push(`/${locale}/login`)
+    }
 
     useEffect(() => {
         ;(async () => {
@@ -69,7 +78,12 @@ export const Header = ({ locale }: Props) => {
                     <div className={commonStyles.listRightWrapper}>
                         <ThemeButton />
                         {profile ? (
-                            <div className={commonStyles.profileButton}>{profile.email}</div>
+                            <div className="flex gap-4">
+                                <div className={commonStyles.themeButton}>{profile.email}</div>
+                                <div onClick={logout} className={commonStyles.themeButton}>
+                                    {texts?.logout}
+                                </div>
+                            </div>
                         ) : (
                             <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
                                 {texts?.login}
@@ -98,7 +112,12 @@ export const Header = ({ locale }: Props) => {
                     <div className={commonStyles.listRightWrapper}>
                         <ThemeButton />
                         {profile ? (
-                            <div className={commonStyles.profileButton}>{profile.email}</div>
+                            <div className="flex gap-4">
+                                <div className={commonStyles.themeButton}>{profile.email}</div>
+                                <div onClick={logout} className={commonStyles.themeButton}>
+                                    {texts?.logout}
+                                </div>
+                            </div>
                         ) : (
                             <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
                                 {texts?.login}
@@ -126,7 +145,12 @@ export const Header = ({ locale }: Props) => {
                 <div className={`${commonStyles.listRightWrapper}`}>
                     <ThemeButton />
                     {profile ? (
-                        <div className={commonStyles.profileButton}>{profile.email}</div>
+                        <div className="flex gap-4">
+                            <div className={commonStyles.themeButton}>{profile.email}</div>
+                            <div onClick={logout} className={commonStyles.themeButton}>
+                                {texts?.logout}
+                            </div>
+                        </div>
                     ) : (
                         <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
                             {texts?.login}

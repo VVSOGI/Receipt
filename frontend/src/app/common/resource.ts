@@ -32,10 +32,13 @@ export const commonStyles = {
     themeButton: `hover:bg-zinc-100
     active:bg-gray-200
     dark:hover:bg-zinc-700 dark:active:bg-gray-900 dark:text-[#239c62]
-    ${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors user-select`,
+    ${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors user-select cursor-pointer`,
 
     /** ThemeButton */
-    profileButton: `${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors dark:text-[#239c62] user-select`,
+    profileButton: `hover:bg-zinc-100
+    active:bg-gray-200
+    dark:hover:bg-zinc-700 dark:active:bg-gray-900 dark:text-[#239c62]
+    ${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors user-select cursor-pointer`,
 
     /** Icons */
     sunIcon: 'h-5 w-5 text-[#239c62]',

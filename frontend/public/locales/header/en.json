@@ -1,5 +1,6 @@
 {
     "home": "HOME",
     "log": "LOG FILE",
-    "login": "LOGIN"
+    "login": "LOGIN",
+    "logout": "LOGOUT"
 }

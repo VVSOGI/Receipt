@@ -17,6 +17,7 @@ interface Props {
 export function Orders({ data, next }: Props) {
     const { small, medium } = useResponsiveScreen()
     const [loading, setLoading] = useState(false)
+    const [papers, setPapers] = useState()
     const language = useRecoilValue(languageState)
 
     useEffect(() => {
@@ -60,13 +61,13 @@ export function Orders({ data, next }: Props) {
     return (
         <div className={styles.orders}>
             <div className={styles.ordersWrapper}>
-                <Order data={data.slice(next, next + 5)} />
+                <Order data={data.slice(next, next + 10)} />
             </div>
             <div className={styles.ordersWrapper}>
-                <Order data={data.slice(next + 5, next + 10)} />
+                <Order data={data.slice(next + 10, next + 20)} />
             </div>
             <div className={styles.ordersWrapper}>
-                <Order data={data.slice(next + 10, next + 15)} />
+                <Order data={data.slice(next + 20, next + 30)} />
             </div>
         </div>
     )

@@ -1,11 +1,10 @@
 'use client'
 
 import Button from '@/app/common/Button'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import config from '../../../../../tailwind.config'
 import { oneMobilePopOTF } from '@/fonts'
-import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { Locales } from '@/types/locales'
 import api from '@/app/utils/api'
@@ -36,6 +35,11 @@ export default function page({ params: { lang } }: Props) {
             console.log(error)
         }
     }
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken')
+        if (!accessToken) router.push(`/${lang}/login`)
+    }, [])
 
     return (
         <div className="w-full my-[32px]">

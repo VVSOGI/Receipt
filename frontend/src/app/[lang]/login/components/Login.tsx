@@ -14,15 +14,7 @@ interface Props {
 export default function Login({ locale }: Props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isLogin, setIsLogin] = useState(false)
-
     const router = useRouter()
-
-    useEffect(() => {
-        if (isLogin) {
-            router.push(`/${locale}/home`)
-        }
-    }, [isLogin])
 
     return (
         <div className={styles.loginWrapper}>
@@ -53,8 +45,10 @@ export default function Login({ locale }: Props) {
                     <button
                         className={styles.loginButton}
                         onClick={async () => {
-                            const isLogin = await onLogin(email, password)
-                            setIsLogin(isLogin)
+                            try {
+                                await onLogin(email, password)
+                                router.push(`/${locale}/home`)
+                            } catch (error: any) {}
                         }}
                     >
                         로그인
