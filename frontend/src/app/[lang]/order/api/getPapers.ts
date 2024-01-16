@@ -1,9 +1,9 @@
 import { OrderType } from '@/types/tickets'
 import axios from 'axios'
 
-export const getOrders = async (): Promise<OrderType[] | any> => {
+export const getPapers = async (page: string): Promise<OrderType[] | any> => {
     try {
-        const res = await axios.get(`${process.env.NODE_BACKEND_URL}/boards`)
+        const res = await axios.get(`${process.env.NODE_BACKEND_URL}/boards?page=${page}`)
         return res.data
     } catch (err: any) {
         if (err.cause?.code === 'ECONNREFUSED') {

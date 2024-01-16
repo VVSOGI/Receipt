@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { OrderType } from '@/types/tickets'
 import { useResponsiveScreen } from '@/app/hooks/useResponsiveScreen'
-import { Order } from '..'
+import { Paper } from '..'
 import { useRecoilValue } from 'recoil'
 import { languageState } from '@/store/languageState'
 import { styles } from '../../resource'
@@ -11,18 +11,18 @@ import { commonStyles } from '@/app/common'
 
 interface Props {
     data: OrderType[]
-    next: number
+    total: number
 }
 
-export function Orders({ data, next }: Props) {
+export function Papers({ data, total }: Props) {
     const { small, medium } = useResponsiveScreen()
     const [loading, setLoading] = useState(false)
-    const [papers, setPapers] = useState()
+    const [papers, setPapers] = useState(data)
     const language = useRecoilValue(languageState)
 
     useEffect(() => {
         if (language) setLoading(true)
-    }, [next, language])
+    }, [language])
 
     if (!loading)
         return (
@@ -30,7 +30,7 @@ export function Orders({ data, next }: Props) {
                 <div className={styles.ordersMobile}>
                     <div className={commonStyles.dividerMobile} />
                     <div className={styles.ordersWrapper}>
-                        <Order data={data.slice(next + 0, next + 30)} />
+                        <Paper data={papers.slice(0, 30)} />
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@ export function Orders({ data, next }: Props) {
             <div className={styles.ordersMobile}>
                 <div className={commonStyles.dividerMobile} />
                 <div className={styles.ordersWrapper}>
-                    <Order data={data.slice(next + 0, next + 30)} />
+                    <Paper data={papers.slice(0, 30)} />
                 </div>
             </div>
         )
@@ -50,24 +50,26 @@ export function Orders({ data, next }: Props) {
         return (
             <div className={styles.orders}>
                 <div className={styles.ordersWrapper}>
-                    <Order data={data.slice(next + 0, next + 15)} />
+                    <Paper data={papers.slice(0, 15)} />
                 </div>
                 <div className={styles.ordersWrapper}>
-                    <Order data={data.slice(next + 15, next + 30)} />
+                    <Paper data={papers.slice(15, 30)} />
                 </div>
             </div>
         )
 
     return (
-        <div className={styles.orders}>
-            <div className={styles.ordersWrapper}>
-                <Order data={data.slice(next, next + 10)} />
-            </div>
-            <div className={styles.ordersWrapper}>
-                <Order data={data.slice(next + 10, next + 20)} />
-            </div>
-            <div className={styles.ordersWrapper}>
-                <Order data={data.slice(next + 20, next + 30)} />
+        <div>
+            <div className={styles.orders}>
+                <div className={styles.ordersWrapper}>
+                    <Paper data={papers.slice(0, 10)} />
+                </div>
+                <div className={styles.ordersWrapper}>
+                    <Paper data={papers.slice(10, 20)} />
+                </div>
+                <div className={styles.ordersWrapper}>
+                    <Paper data={papers.slice(20, 30)} />
+                </div>
             </div>
         </div>
     )

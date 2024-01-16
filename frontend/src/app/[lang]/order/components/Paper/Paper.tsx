@@ -9,7 +9,7 @@ interface Props {
     data: OrderType[]
 }
 
-export function Order({ data }: Props) {
+export function Paper({ data }: Props) {
     if (!data.length) return <div className={styles.noContents}>No orders</div>
 
     return data.map((order: OrderType) => (

@@ -1,6 +1,6 @@
 import { Locales } from '@/types/locales'
-import { getOrders } from './api/getOrders'
-import { Orders } from './components'
+import { getPapers } from './api/getPapers'
+import { Papers } from './components'
 import Error from '@/app/common/Error'
 import ShareMenu from './components/Share/ShareMenu'
 
@@ -9,14 +9,12 @@ interface Props {
     searchParams: { page: string }
 }
 
-export default async function page({ params, searchParams }: Props) {
-    const next = 0 + searchParams.page ? Number(searchParams.page) : 0 * 30
-
+export default async function page({ params, searchParams: { page } }: Props) {
     try {
-        const data = await getOrders()
+        const data = await getPapers(page || '1')
         return (
             <section className="w-full">
-                <Orders next={next} data={data} />
+                <Papers data={data.data} total={data.total} />
                 <ShareMenu />
             </section>
         )
