@@ -74,8 +74,3 @@ export function Papers({ data, total }: Props) {
         </div>
     )
 }
-
-/**
- * seo를 높이기 위해서 css에 display none을 한 다음 검색 결과로 데이터를 받아올 수 있게끔만 하고
- * 실제 브라우저로 들어온 사용자에게는 노출하지 않는 방식으로 대응해봤는데 나쁘지 않은듯.
- */
