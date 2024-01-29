@@ -17,9 +17,6 @@ export default function Register({ locale }: Props) {
 
     return (
         <div className={styles.loginWrapper}>
-            <div className={styles.imageSection}>
-                <img className={styles.image} src="/images/icon-github.png" alt="" />
-            </div>
             <div className={styles.loginSection}>
                 <div className={styles.loginTitle}>회원가입 하기</div>
                 <div className={styles.inputWrapper}>

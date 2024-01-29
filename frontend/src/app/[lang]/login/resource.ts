@@ -3,7 +3,7 @@ import { oneMobileTitleOTF } from '@/fonts'
 export const styles = {
     /** Layout */
     screen: 'h-screen',
-    section: 'flex justify-center h-[calc(100vh-84px)] flex-col gap-8 px-48 max-lg:px-12',
+    section: 'container flex justify-center h-[calc(100vh-84px)] flex-col gap-8 px-48 max-lg:px-12',
 
     /** Login */
     loginWrapper: 'dark:bg-dark-bg-title flex h-[35rem] rounded-lg overflow-hidden shadow-default',

@@ -18,9 +18,9 @@ export default function Login({ locale }: Props) {
 
     return (
         <div className={styles.loginWrapper}>
-            <div className={styles.imageSection}>
+            {/* <div className={styles.imageSection}>
                 <img className={styles.image} src="/images/icon-google.png" alt="" />
-            </div>
+            </div> */}
             <div className={styles.loginSection}>
                 <div className={styles.loginTitle}>로그인</div>
                 <div className={styles.inputWrapper}>

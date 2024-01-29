@@ -12,7 +12,8 @@ export const styles = {
     input: 'dark:bg-gray-100 border-grey-200 block w-full rounded-md border px-4 py-3 text-gray-900 focus-visible:outline-none text-base0',
 
     buttonsWrapper: 'flex flex-col gap-2 mt-2',
-    loginButton: 'hover:bg-sky-600 active:bg-sky-700 px-4 py-3 bg-sky-500 text-white rounded-md border border-gray-200 text-base0',
+    loginButton:
+        'hover:bg-gray-100 active:bg-gray-200 px-4 py-3 bg-gray-500 text-white rounded-md border border-gray-200 text-base0 text-gray-800',
     registerButton: 'hover:bg-gray-100 active:bg-gray-200 px-4 py-3 rounded-md border border-gray-200 text-base0',
 
     /** oAuth */

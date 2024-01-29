@@ -10,7 +10,9 @@ export default function layout({ children, params }: { children: React.ReactNode
         <div>
             <main className="h-screen">
                 <Header locale={locale} />
-                <section className="flex justify-center h-[calc(100vh-84px)] flex-col gap-8 px-48 max-lg:px-12">{children}</section>
+                <section className="container flex justify-center h-[calc(100vh-84px)] flex-col gap-8 px-48 max-lg:px-12">
+                    {children}
+                </section>
             </main>
             <Footer />
         </div>
