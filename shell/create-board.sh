@@ -1,17 +1,19 @@
 #!/bin/bash
 set -e
 source env.sh
+source config.sh
 
 for i in {150..300}
 do
-  # JSON 본문 생성
+  TITLE=${TITLES[$RANDOM % ${#TITLES[@]}]}
+  DESCRIPTION=${DESCRIPTIONS[$RANDOM % ${#DESCRIPTIONS[@]}]}
+
   PAYLOAD=$(jq -n \
-                  --arg title "post $i" \
-                  --arg description "contents $i" \
+                  --arg title "$TITLE" \
+                  --arg description "$DESCRIPTION" \
                   --arg priority "high" \
                   '{title: $title, description: $description, priority: $priority}')
 
-  # API에 POST 요청 보내기
   curl -X POST "$API_URL/boards" \
        -H "Content-Type: application/json" \
        -H "Authorization: bearer $AUTH_TOKEN" \
