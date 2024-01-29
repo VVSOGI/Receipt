@@ -17,12 +17,16 @@ interface Props {
 export function Papers({ data, total }: Props) {
     const { small, medium } = useResponsiveScreen()
     const [loading, setLoading] = useState(false)
-    const [papers, setPapers] = useState(data)
+    const [papers, setPapers] = useState<OrderType[]>([])
     const language = useRecoilValue(languageState)
 
     useEffect(() => {
         if (language) setLoading(true)
     }, [language])
+
+    useEffect(() => {
+        setPapers(data)
+    }, [data])
 
     if (!loading)
         return (
@@ -30,7 +34,7 @@ export function Papers({ data, total }: Props) {
                 <div className={styles.ordersMobile}>
                     <div className={commonStyles.dividerMobile} />
                     <div className={styles.ordersWrapper}>
-                        <Paper data={papers.slice(0, 30)} />
+                        <Paper data={data.slice(0, 30)} />
                     </div>
                 </div>
             </div>

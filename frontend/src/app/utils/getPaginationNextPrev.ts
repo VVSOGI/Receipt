@@ -1,15 +1,21 @@
-export function getPaginationOrder(page: number) {
-    const pagination = Math.floor((Number(page) - 1) / 5) * 5 + 1
-    const pages = Array.from({ length: 5 }, (_, i) => pagination + i)
+export function getPaginationOrder(chapter: number, total: number) {
+    const length = Math.ceil(total / 30)
+    const pages = Array.from({ length }, (_, i) => i + 1)
 
-    return pages
+    return pages.slice(chapter * 5, 5 * (chapter + 1))
 }
 
-export function getPaginationNextPrev(page: number) {
-    const currentPage = page % 5 !== 0 ? Math.floor(page / 5) : Math.floor((page - 1) / 5)
-
-    const nextPage = currentPage * 5 + 6
-    const prevPage = (currentPage - 1) * 5 + 5
+export function getPaginationNextPrev(chapter: number) {
+    const nextPage = chapter * 5 + 6
+    const prevPage = (chapter - 1) * 5 + 5
 
     return { nextPage, prevPage }
+}
+
+export function isCanPrev(chapter: number) {
+    return chapter > 0
+}
+
+export function isCanNext(chapter: number, total: number) {
+    return 150 * (chapter + 1) < total
 }
