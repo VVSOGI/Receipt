@@ -10,6 +10,10 @@ export class CreateBoardDto {
   @IsNotEmpty()
   description: string;
 
+  @IsString()
+  @IsNotEmpty()
+  commitUrl: string;
+
   @IsEnum(Priority)
   priority: Priority;
 }

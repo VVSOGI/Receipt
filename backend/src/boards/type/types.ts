@@ -8,6 +8,7 @@ export interface CreateBoard {
   userId: string;
   title: string;
   description: string;
+  commitUrl: string;
   priority: Priority;
 }
 
