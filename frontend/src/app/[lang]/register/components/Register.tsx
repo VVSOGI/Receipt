@@ -47,7 +47,7 @@ export default function Register({ locale }: Props) {
                     />
                 </div>
                 <div className={styles.buttonsWrapper}>
-                    <button className={styles.loginButton} onClick={() => {}}>
+                    <button className={styles.registerButton} onClick={() => {}}>
                         회원가입 하기
                     </button>
                     <button className={styles.registerButton} onClick={() => router.push(`/${locale}/login`)}>
