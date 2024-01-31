@@ -25,8 +25,9 @@ export const commonStyles = {
     listMobile: 'flex gap-8',
 
     /** Footer */
-    footerWrapper: 'flex h-[160px] items-center justify-center border-t border-t-gray-200 p-[148px] py-6',
-    footerContents: 'hover:text-red-500 text-3xl w-fit cursor-pointer select-none font-bold transition',
+    footerWrapper: 'h-full flex flex-col container',
+    footerContents: `dark:border-gray-700 
+        w-fit flex flex-col my-[32px] gap-[8px] select-none font-bold transition text-[14px]`,
 
     /** ThemeButton */
     themeButton: `hover:bg-zinc-100
