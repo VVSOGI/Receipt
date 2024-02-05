@@ -33,7 +33,8 @@ export const commonStyles = {
     themeButton: `hover:bg-zinc-100
     active:bg-gray-200
     dark:hover:bg-zinc-700 dark:active:bg-gray-900 dark:text-[#239c62]
-    ${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors user-select cursor-pointer`,
+    ${oneMobilePopOTF.className} flex items-center justify-center rounded-lg p-2 transition-colors user-select cursor-pointer
+    select-none duration-0`,
 
     /** ThemeButton */
     profileButton: `hover:bg-zinc-100

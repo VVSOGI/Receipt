@@ -8,6 +8,7 @@ import useProfile from '@/app/hooks/useProfile'
 import { ThemeButton, commonStyles } from '..'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { Bars4Icon } from '@heroicons/react/24/solid'
 
 interface Props {
     locale: 'en' | 'ko'
@@ -16,6 +17,7 @@ interface Props {
 export const Header = ({ locale }: Props) => {
     const { profile } = useProfile()
     const [isLoading, setIsLoading] = useState(true)
+    const [openMenu, setOpenMenu] = useState(false)
     const [, setLanguage] = useRecoilState(languageState)
     const { small, medium } = useResponsiveScreen()
     const [texts, setTexts] = useState<HeaderLocales | undefined>()
@@ -36,6 +38,14 @@ export const Header = ({ locale }: Props) => {
         setIsLoading(false)
         setLanguage(locale)
     }, [])
+
+    useEffect(() => {
+        if (openMenu) {
+            document.getElementById('mobileMenu')?.style.setProperty('opacity', '1')
+        } else {
+            document.getElementById('mobileMenu')?.style.setProperty('opacity', '0')
+        }
+    }, [openMenu])
 
     if (isLoading)
         return (
@@ -76,9 +86,20 @@ export const Header = ({ locale }: Props) => {
                     </ul>
 
                     <div className={commonStyles.listRightWrapper}>
-                        <ThemeButton />
+                        <Bars4Icon onClick={() => setOpenMenu(!openMenu)} className={`${commonStyles.themeButton} w-[40px] h-[40px] `} />
+                    </div>
+                </nav>
+                <div
+                    className={`
+                    ${openMenu ? 'h-[36px]' : 'h-[0px]'}
+                    flex
+                    ease-in-out	 duration-500
+                `}
+                >
+                    <div id="mobileMenu" className="flex duration-150 ease-out opacity-0">
                         {profile ? (
                             <div className="flex gap-4">
+                                <ThemeButton />
                                 <div className={commonStyles.themeButton}>{profile.email}</div>
                                 <div onClick={logout} className={commonStyles.themeButton}>
                                     {texts?.logout}
@@ -90,7 +111,7 @@ export const Header = ({ locale }: Props) => {
                             </Link>
                         )}
                     </div>
-                </nav>
+                </div>
             </header>
         )
 

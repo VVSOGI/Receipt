@@ -4,4 +4,5 @@ export interface OrderType {
     description: string
     priority: 'high' | 'low'
     email: string
+    commitUrl: string
 }
