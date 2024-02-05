@@ -5,9 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../users/entities/user.entity';
 import { HashingService } from 'src/utils/hashing.service';
 import { JwtModule } from '@nestjs/jwt';
-import { JwtStrategy } from './guards/jwt.strategy';
+import { JwtStrategy } from './strategies/jwt.strategy';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersRepository } from 'src/users/users.repository';
+import { GoogleStrategy } from './strategies/google.strategy';
 
 @Module({
   imports: [
@@ -22,6 +23,12 @@ import { UsersRepository } from 'src/users/users.repository';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, HashingService, JwtStrategy, UsersRepository],
+  providers: [
+    AuthService,
+    HashingService,
+    JwtStrategy,
+    GoogleStrategy,
+    UsersRepository,
+  ],
 })
 export class AuthModule {}
