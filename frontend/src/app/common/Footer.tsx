@@ -3,7 +3,7 @@ import { commonStyles } from './resource'
 import Link from 'next/link'
 import { oneMobilePopOTF } from '@/fonts'
 
-export function Footer() {
+export default function Footer() {
     return (
         <footer className={commonStyles.footerWrapper}>
             <div className="w-full border-t border-dashed border-gray-200" />

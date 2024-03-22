@@ -10,7 +10,8 @@ export async function POST(req: NextRequest) {
             {
                 title,
                 description,
-                priority: 'high'
+                priority: 'high',
+                commitUrl: 'https://github.com/VVSOGI'
             },
             {
                 headers: {
@@ -18,7 +19,6 @@ export async function POST(req: NextRequest) {
                 }
             }
         )
-
         return NextResponse.json(data)
     } catch (error: any) {
         return NextResponse.json({ error: error.response.data.message }, { status: error.response.data.statusCode })

@@ -1,5 +1,5 @@
 import './globals.css'
-import ThemeProviders from '@/provider/Theme'
+import ThemeProviders from '@/provider/theme'
 import RecoilProvider from '@/provider/GlobalState'
 
 import type { Metadata } from 'next'

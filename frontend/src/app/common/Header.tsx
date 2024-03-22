@@ -1,3 +1,5 @@
+'use client'
+
 import { useResponsiveScreen } from '@/app/hooks/useResponsiveScreen'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -5,7 +7,7 @@ import { languageState } from '@/store/languageState'
 import { HeaderLocales } from '@/types/locales'
 import { getLocales } from '@/utils/getLocales'
 import useProfile from '@/app/hooks/useProfile'
-import { ThemeButton, commonStyles } from '..'
+import { ThemeButton, commonStyles } from '.'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Bars4Icon } from '@heroicons/react/24/solid'
@@ -14,7 +16,7 @@ interface Props {
     locale: 'en' | 'ko'
 }
 
-export const Header = ({ locale }: Props) => {
+export default function Header({ locale }: Props) {
     const { profile } = useProfile()
     const [isLoading, setIsLoading] = useState(true)
     const [openMenu, setOpenMenu] = useState(false)
@@ -89,13 +91,7 @@ export const Header = ({ locale }: Props) => {
                         <Bars4Icon onClick={() => setOpenMenu(!openMenu)} className={`${commonStyles.themeButton} w-[40px] h-[40px] `} />
                     </div>
                 </nav>
-                <div
-                    className={`
-                    ${openMenu ? 'h-[36px]' : 'h-[0px]'}
-                    flex
-                    ease-in-out	 duration-500
-                `}
-                >
+                <div className={`${openMenu ? 'h-[36px]' : 'h-[0px]'} flex ease-in-out duration-500`}>
                     <div id="mobileMenu" className="flex duration-150 ease-out opacity-0">
                         {profile ? (
                             <div className="flex gap-4">
