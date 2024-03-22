@@ -31,9 +31,7 @@ export default async function page({ params, searchParams: { page } }: Props) {
                 <Papers data={data} total={total} />
                 <div className="flex gap-12 justify-center items-center mt-24">
                     <Link
-                        className={`
-                            ${prev ? 'cursor-pointer' : 'dark:text-gray-700 text-gray-300 cursor-not-allowed'}
-                                `}
+                        className={`${prev ? 'cursor-pointer' : 'dark:text-gray-700 text-gray-300 cursor-not-allowed'}`}
                         href={prev ? `/${params.lang}/order?page=${prevPage}` : `/${params.lang}/order?page=${defaultPage}`}
                     >
                         <ChevronLeftIcon width={18} height={18} />
