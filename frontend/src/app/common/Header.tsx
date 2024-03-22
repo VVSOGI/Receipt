@@ -17,19 +17,25 @@ interface Props {
 }
 
 export default function Header({ locale }: Props) {
-    const { profile } = useProfile()
     const [isLoading, setIsLoading] = useState(true)
     const [openMenu, setOpenMenu] = useState(false)
+    const [texts, setTexts] = useState<HeaderLocales | undefined>()
     const [, setLanguage] = useRecoilState(languageState)
     const { small, medium } = useResponsiveScreen()
-    const [texts, setTexts] = useState<HeaderLocales | undefined>()
+    const { profile } = useProfile()
     const router = useRouter()
+
+    const targetRoute = {
+        home: `/${locale}/home`,
+        log: `/${locale}/log`,
+        login: `/${locale}/login`
+    }
 
     const logout = () => {
         localStorage.removeItem('accessToken')
         localStorage.removeItem('refreshToken')
         localStorage.removeItem('userId')
-        router.push(`/${locale}/login`)
+        router.push(targetRoute.login)
     }
 
     useEffect(() => {
@@ -55,10 +61,10 @@ export default function Header({ locale }: Props) {
                 <nav className={commonStyles.navbar}>
                     <ul className={commonStyles.listWrapper}>
                         <li className={commonStyles.list}>
-                            <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
+                            <Link className={commonStyles.themeButton} href={targetRoute.home}>
                                 {texts?.home}
                             </Link>
-                            <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
+                            <Link className={commonStyles.themeButton} href={targetRoute.log}>
                                 {texts?.log}
                             </Link>
                         </li>
@@ -78,10 +84,10 @@ export default function Header({ locale }: Props) {
                 <nav className={commonStyles.navbar}>
                     <ul className={commonStyles.listWrapper}>
                         <li className={commonStyles.listMobile}>
-                            <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
+                            <Link className={commonStyles.themeButton} href={targetRoute.home}>
                                 {texts?.home}
                             </Link>
-                            <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
+                            <Link className={commonStyles.themeButton} href={targetRoute.log}>
                                 {texts?.log}
                             </Link>
                         </li>
@@ -102,7 +108,7 @@ export default function Header({ locale }: Props) {
                                 </div>
                             </div>
                         ) : (
-                            <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
+                            <Link className={commonStyles.themeButton} href={targetRoute.login}>
                                 {texts?.login}
                             </Link>
                         )}
@@ -117,10 +123,10 @@ export default function Header({ locale }: Props) {
                 <nav className={commonStyles.navbar}>
                     <ul className={commonStyles.listWrapper}>
                         <li className={commonStyles.list}>
-                            <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
+                            <Link className={commonStyles.themeButton} href={targetRoute.home}>
                                 {texts?.home}
                             </Link>
-                            <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
+                            <Link className={commonStyles.themeButton} href={targetRoute.log}>
                                 {texts?.log}
                             </Link>
                         </li>
@@ -136,7 +142,7 @@ export default function Header({ locale }: Props) {
                                 </div>
                             </div>
                         ) : (
-                            <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
+                            <Link className={commonStyles.themeButton} href={targetRoute.login}>
                                 {texts?.login}
                             </Link>
                         )}
@@ -150,10 +156,10 @@ export default function Header({ locale }: Props) {
             <nav className={commonStyles.navbar}>
                 <ul className={commonStyles.listWrapper}>
                     <li className={commonStyles.list}>
-                        <Link className={commonStyles.themeButton} href={`/${locale}/home`}>
+                        <Link className={commonStyles.themeButton} href={targetRoute.home}>
                             {texts?.home}
                         </Link>
-                        <Link className={commonStyles.themeButton} href={`/${locale}/order`}>
+                        <Link className={commonStyles.themeButton} href={targetRoute.log}>
                             {texts?.log}
                         </Link>
                     </li>
@@ -169,7 +175,7 @@ export default function Header({ locale }: Props) {
                             </div>
                         </div>
                     ) : (
-                        <Link className={commonStyles.themeButton} href={`/${locale}/login`}>
+                        <Link className={commonStyles.themeButton} href={targetRoute.login}>
                             {texts?.login}
                         </Link>
                     )}
