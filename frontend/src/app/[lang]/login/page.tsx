@@ -10,7 +10,7 @@ interface Props {
     params: { lang: Locales }
 }
 
-export default async function page({ params: { lang } }: Props) {
+export default function page({ params: { lang } }: Props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const router = useRouter()

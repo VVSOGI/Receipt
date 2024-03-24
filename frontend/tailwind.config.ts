@@ -7,6 +7,7 @@ const config: Config = {
     theme: {
         colors: {
             primary: '#60d29b',
+            'primary-hover': '#3ec082',
             white: '#fff',
             'bg-title': '#e4e4eb',
             'zinc-100': '#f4f4f5',

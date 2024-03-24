@@ -1,4 +1,3 @@
-import useProfile from '@/app/hooks/useProfile'
 import axios from 'axios'
 
 export async function onLogin(email: string, password: string) {

@@ -1,7 +1,7 @@
-import { OrderType } from '@/types/tickets'
+import { LogType } from '@/types/logs'
 import axios from 'axios'
 
-export const getPapers = async (page: number): Promise<OrderType[] | any> => {
+export const getPapers = async (page: number): Promise<LogType[] | any> => {
     try {
         const res = await axios.get(`${process.env.NODE_BACKEND_URL}/boards?page=${page}`)
         return res.data

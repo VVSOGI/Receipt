@@ -1,4 +1,4 @@
-import { OrderType } from '@/types/tickets'
+import { OrderType } from '@/types/logs'
 import React, { createContext, useState } from 'react'
 
 export interface OrdersContext {

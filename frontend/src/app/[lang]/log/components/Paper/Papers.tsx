@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { OrderType } from '@/types/tickets'
+import { LogType } from '@/types/logs'
 import { useResponsiveScreen } from '@/app/hooks/useResponsiveScreen'
 import { Paper } from '..'
 import { useRecoilValue } from 'recoil'
@@ -10,14 +10,14 @@ import { styles } from '../../resource'
 import { commonStyles } from '@/app/common'
 
 interface Props {
-    data: OrderType[]
+    data: LogType[]
     total: number
 }
 
 export function Papers({ data, total }: Props) {
     const { small, medium } = useResponsiveScreen()
     const [loading, setLoading] = useState(false)
-    const [papers, setPapers] = useState<OrderType[]>([])
+    const [papers, setPapers] = useState<LogType[]>([])
     const language = useRecoilValue(languageState)
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export function Papers({ data, total }: Props) {
         return (
             <div className="hidden">
                 <div className={styles.ordersMobile}>
-                    <div className={commonStyles.dividerMobile} />
+                    <div />
                     <div className={styles.ordersWrapper}>
                         <Paper data={data.slice(0, 30)} />
                     </div>
@@ -43,7 +43,7 @@ export function Papers({ data, total }: Props) {
     if (small)
         return (
             <div className={styles.ordersMobile}>
-                <div className={commonStyles.dividerMobile} />
+                <div />
                 <div className={styles.ordersWrapper}>
                     <Paper data={papers.slice(0, 30)} />
                 </div>

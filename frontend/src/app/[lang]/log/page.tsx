@@ -19,8 +19,8 @@ export default async function page({ params, searchParams: { page } }: Props) {
         const chapter = defaultPage % 5 !== 0 ? Math.floor(defaultPage / 5) : Math.floor((defaultPage - 1) / 5)
 
         const { data, total } = await getPapers(defaultPage)
-        const pages = getPaginationOrder(chapter, total)
         const { nextPage, prevPage } = getPaginationNextPrev(chapter)
+        const pages = getPaginationOrder(chapter, total)
 
         const prev = isCanPrev(chapter)
         const next = isCanNext(chapter, total)
@@ -29,16 +29,16 @@ export default async function page({ params, searchParams: { page } }: Props) {
         return (
             <section className="w-full">
                 <Papers data={data} total={total} />
-                <div className="flex gap-12 justify-center items-center mt-24">
+                <div className="flex gap-12 justify-center items-center mt-12">
                     <Link
                         className={`${prev ? 'cursor-pointer' : 'dark:text-gray-700 text-gray-300 cursor-not-allowed'}`}
-                        href={prev ? `/${params.lang}/order?page=${prevPage}` : `/${params.lang}/order?page=${defaultPage}`}
+                        href={prev ? `/${params.lang}/log?page=${prevPage}` : `/${params.lang}/log?page=${defaultPage}`}
                     >
                         <ChevronLeftIcon width={18} height={18} />
                     </Link>
                     {pages.map((index) => (
                         <Link
-                            href={`/${params.lang}/order?page=${index}`}
+                            href={`/${params.lang}/log?page=${index}`}
                             style={{
                                 color: index === Number(defaultPage) ? colors.first : '',
                                 fontSize: index === Number(defaultPage) ? '24px' : '14px'
@@ -53,7 +53,7 @@ export default async function page({ params, searchParams: { page } }: Props) {
                         className={`
                             ${next ? 'cursor-pointer' : 'dark:text-gray-700 text-gray-300 cursor-not-allowed'}
                                 `}
-                        href={next ? `/${params.lang}/order?page=${nextPage}` : `/${params.lang}/order?page=${defaultPage}`}
+                        href={next ? `/${params.lang}/log?page=${nextPage}` : `/${params.lang}/log?page=${defaultPage}`}
                     >
                         <ChevronRightIcon width={18} height={18} />
                     </Link>

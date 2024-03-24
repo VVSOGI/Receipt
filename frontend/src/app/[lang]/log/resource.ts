@@ -8,7 +8,7 @@ export const styles = {
     ordersWrapper: 'flex flex-col flex-1 gap-4',
 
     /** Mobile Page */
-    ordersMobile: 'w-full flex flex-col gap-4 px-4',
+    ordersMobile: 'w-full flex flex-col gap-4',
 
     /** Order */
     noContents: `${oneMobilePopOTF.className} dark:text-slate-200 h-auto flex justify-center items-center text-base1 text-slate-800`,

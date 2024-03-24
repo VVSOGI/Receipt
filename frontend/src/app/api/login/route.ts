@@ -13,7 +13,6 @@ export async function POST(req: NextRequest) {
             password
         })
 
-        console.log(data)
         return NextResponse.json(data)
     } catch (err: any) {
         return NextResponse.json({ message: err.response.data.message }, { status: err.response.data.statusCode })
