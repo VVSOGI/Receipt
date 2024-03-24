@@ -1,12 +1,11 @@
 #!/bin/bash
 set -e
 source env.sh
-source config.sh
 
 for i in {1..150}
 do
-  TITLE=${TITLES[$RANDOM % ${#TITLES[@]}]}
-  DESCRIPTION=${DESCRIPTIONS[$RANDOM % ${#DESCRIPTIONS[@]}]}
+  TITLE="title $i"
+  DESCRIPTION="description $i"
 
   PAYLOAD=$(jq -n \
                   --arg title "$TITLE" \
