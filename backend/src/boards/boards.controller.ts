@@ -3,6 +3,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   Query,
   Request,
@@ -30,5 +31,11 @@ export class BoardsController {
     }
 
     return this.boardsService.getAllBoards({ page });
+  }
+
+  @Get('/:id')
+  getBoardById(@Param('id') id: string) {
+    throw new BadRequestException('Invalid id');
+    return this.boardsService.getBoardById(id);
   }
 }

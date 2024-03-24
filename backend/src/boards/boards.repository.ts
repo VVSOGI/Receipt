@@ -19,7 +19,8 @@ export class BoardsRepository {
   ) {}
 
   async create(createBoard: CreateBoard) {
-    const board = this.boardsRepository.create({ ...createBoard });
+    const id = v4();
+    const board = this.boardsRepository.create({ id, ...createBoard });
 
     return await this.boardsRepository.save(board);
   }
@@ -28,11 +29,18 @@ export class BoardsRepository {
     const [data, total] = await this.boardsRepository.findAndCount({
       take: 30,
       skip: 30 * (page - 1),
+      order: {
+        createdAt: 'DESC',
+      },
     });
 
     return {
       data,
       total,
     };
+  }
+
+  async getBoardById(id: string) {
+    return await this.boardsRepository.findOneBy({ id });
   }
 }

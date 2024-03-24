@@ -1,5 +1,7 @@
+#!/bin/bash
 set -e
-source ./.env
+cd "$(dirname "$0")"
+source ../.env
 
 docker run \
   --name $DB_CONTAINER_NAME \

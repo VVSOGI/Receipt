@@ -24,6 +24,7 @@
     "migration:show": "typeorm migration:show -d ./dist/database/data-source.js",
     "migration:run": "typeorm migration:run -d ./dist/database/data-source.js",
     "migration:dev": "typeorm migration:run src/database/data-source.ts",
+    "migration:revert": "typeorm migration:revert -d ./dist/database/data-source.js",
     "docker-compose:up": "docker-compose --env-file ./.env --profile project_1 up --build -d"
   },
   "dependencies": {
