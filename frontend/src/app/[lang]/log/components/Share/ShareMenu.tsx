@@ -13,7 +13,7 @@ export default function ShareMenu() {
     return (
         language && (
             <div
-                onClick={() => router.push(`/${language}/order/print`)}
+                onClick={() => router.push(`/${language}/log/print`)}
                 className={`
                     active:bg-gray-700 hover:bg-gray-400 hover:last:text-white hover:border-gray-400 last:text-gray-700 border-bg-title bg-white
                     dark:active:bg-white dark:hover:border-white dark:border-[transperant] dark:hover:last:text-dark-bg-title dark:bg-bg-title 

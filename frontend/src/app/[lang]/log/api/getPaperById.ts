@@ -7,10 +7,11 @@ export default async function getPaperById(id: string) {
     })
 
     if (!data.ok) {
+        const { message, statusCode } = await data.json()
         throw new Error(
             JSON.stringify({
-                message: data.statusText,
-                statusCode: data.status
+                message,
+                statusCode
             })
         )
     }

@@ -49,7 +49,14 @@ const config: Config = {
             base2: '1.125rem',
             base3: '1.25rem',
             base4: '1.375rem',
-            base5: '1.5rem'
+            base5: '1.5rem',
+            title: '3rem'
+        },
+        fontWeight: {
+            base: '400',
+            medium: '500',
+            bold: '600',
+            title: '700'
         },
         extend: {
             flex: {

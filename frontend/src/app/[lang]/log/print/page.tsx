@@ -30,7 +30,7 @@ export default function page({ params: { lang } }: Props) {
                     }
                 }
             )
-            router.push(`/${lang}/order`)
+            router.push(`/${lang}/log`)
         } catch (error) {
             console.log(error)
         }

@@ -11,7 +11,7 @@ interface Props {
 }
 
 export function Paper({ data }: Props) {
-    if (!data.length) return <div className={styles.noContents}>No orders</div>
+    if (!data.length) return <div className={styles.noContents}>Empty</div>
 
     return data.map((log: LogType) => (
         <Link href={`/log/${log.id}`} key={log.id} className={styles.orderWrapper}>
