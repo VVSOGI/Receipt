@@ -41,6 +41,16 @@ export class BoardsRepository {
   }
 
   async getBoardById(id: string) {
-    return await this.boardsRepository.findOneBy({ id });
+    const board = await this.boardsRepository.findOneBy({ id });
+    if (board) {
+      const createdAtUtc = new Date(board.createdAt);
+      const updatedAtUtc = new Date(board.updatedAt);
+
+      const koreaTimeOffset = 9 * 60 * 60 * 1000;
+
+      board.createdAt = new Date(createdAtUtc.getTime() + koreaTimeOffset);
+      board.updatedAt = new Date(updatedAtUtc.getTime() + koreaTimeOffset);
+    }
+    return board;
   }
 }
