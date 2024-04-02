@@ -1,19 +1,25 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Locales } from '@/types/locales'
 import { styles } from './resource'
+import { registerUser } from './utils'
 
 interface Props {
     params: { lang: Locales }
 }
 
-export default async function page({ params: { lang } }: Props) {
+export default function page({ params: { lang } }: Props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [checkPassword, setCheckPassword] = useState('')
+    const [error, setError] = useState<string | null>(null)
     const router = useRouter()
+
+    useEffect(() => {
+        setError(null)
+    }, [email, password, checkPassword])
 
     return (
         <div className={styles.loginWrapper}>
@@ -46,8 +52,12 @@ export default async function page({ params: { lang } }: Props) {
                         onChange={(e) => setCheckPassword(e.target.value)}
                     />
                 </div>
+                <div>{error && <p className="text-red-500 text-base0">{error}</p>}</div>
                 <div className={styles.buttonsWrapper}>
-                    <button className={styles.registerButton} onClick={() => {}}>
+                    <button
+                        className={styles.registerButton}
+                        onClick={() => registerUser({ email, password, checkPassword, lang, router, setError })}
+                    >
                         회원가입 하기
                     </button>
                     <button className={styles.registerButton} onClick={() => router.push(`/${lang}/login`)}>
